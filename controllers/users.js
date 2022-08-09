@@ -35,8 +35,12 @@ const AddUsers = (req, res, next) => {
             message: "bad request"
         })
     }
+}
 
-
+const DisableUser = (req, res, next)=>{
+    if (req.body.is_active){
+        model.User.findOne
+    }
 }
 module.exports = {
     GetUsers,
