@@ -1,7 +1,7 @@
 /**@format */
 
-const models = require('../models/index');
-
+const models = require('../models/user');
+const migrate = require('../migrations/20220810092211-create-user')
 const GetUsers = async (req, res, next) => {
     await models.User.findAll();
     res.status(200).json({
@@ -12,22 +12,18 @@ const GetUsers = async (req, res, next) => {
 };
 
 const AddUsers = (req, res, next) => {
-    if (req.body.user_name,
-        req.body.hash_pwd,
-        req.body.full_name,
-        req.body.role,
-        req.body.is_active) {
+    if (req.body.user_name) {
+        
         models.User.create({
             user_name: req.body.user_name,
-            hash_pwd: req.body.hash_pwd,
-            full_name: req.body.full_name,
-            role: req.body.role,
-            is_active: req.body.is_active
-        });
+            
+        }) &&
+        migrate.tbgenerate
         return res.status(200).json({
             status: 200,
             message: "ok"
-        })
+        }) 
+        
 
     } else {
         return res.status(400).json({

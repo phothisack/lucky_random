@@ -1,0 +1,92 @@
+{
+    "definition": {
+        "openapi": "3.0.3",
+        "info": {
+            "title": "API Documentations",
+            "version": "1.0.0"
+        },
+        "components": {
+            "securitySchemes": {
+                "bearerAuth": {
+                    "type": "http",
+                    "scheme": "bearer",
+                    "bearerFormat": "JWT"
+                }
+            },
+            "responses": {
+                "UnauthorizedError": {
+                    "description": "Unauthorized",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "integer",
+                                        "example": "401"
+                                    },
+                                    "message": {
+                                        "type": "string",
+                                        "example": "Unauthorized."
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                },
+                "InternalServerError": {
+                    "description": "Internal Server Error.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "integer",
+                                        "example": "500"
+                                    },
+                                    "message": {
+                                        "type": "string",
+                                        "example": "Internal Server Error."
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                },
+                "BadRequest": {
+                    "description": "Bad Request.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "integer",
+                                        "example": "400"
+                                    },
+                                    "message": {
+                                        "type": "string",
+                                        "example": "Bad Request."
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+     
+    },
+
+    "apis": [
+        "controllers/**/*.js"
+        
+    ]
+}
+
+
+
